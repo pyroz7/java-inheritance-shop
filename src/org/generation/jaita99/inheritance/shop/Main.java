@@ -1,19 +1,63 @@
 package org.generation.jaita99.inheritance.shop;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.math.BigDecimal;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Invio with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Carrello carrello = new Carrello();
+        Scanner scanner = new Scanner(System.in);
 
-        // Press Maiusc+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        while (true) {
+            System.out.println("Inserisci un prodotto (1. Smartphone, 2. Televisore, 3. Cuffie, 0. Esci): ");
+            int scelta = scanner.nextInt();
 
-            // Press Maiusc+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+            if (scelta == 0) {
+                break;
+            }
+
+            System.out.println("Inserisci il codice: ");
+            BigDecimal codice = scanner.nextBigDecimal();
+            System.out.println("Inserisci il nome: ");
+            String nome = scanner.next();
+            System.out.println("Inserisci la descrizione: ");
+            String descrizione = scanner.next();
+            System.out.println("Inserisci il prezzo: ");
+            BigDecimal prezzo = scanner.nextBigDecimal();
+            System.out.println("Inserisci l'IVA: ");
+            BigDecimal iva = scanner.nextBigDecimal();
+
+            switch (scelta) {
+                case 1:
+                    System.out.println("Inserisci l'IMEI: ");
+                    String imei = scanner.nextLine();
+                    System.out.println("Inserisci la memoria: ");
+                    BigDecimal memoria = scanner.nextBigDecimal();
+                    carrello.aggiungiProdotto(new Smartphone(codice, nome, descrizione, prezzo, iva, imei, memoria));
+                    break;
+
+                case 2:
+                    System.out.println("Inserisci le dimensioni: ");
+                    String dimensioni = scanner.next();
+                    System.out.println("Il televisore è smart? (true/false): ");
+                    boolean smart = scanner.nextBoolean();
+                    carrello.aggiungiProdotto(new Televisore(codice, nome, descrizione, prezzo, iva, dimensioni, smart));
+                    break;
+
+                case 3:
+                    System.out.println("Inserisci il colore: ");
+                    String colore = scanner.next();
+                    System.out.println("Le cuffie sono wireless? (true/false): ");
+                    boolean wireless = scanner.nextBoolean();
+                    carrello.aggiungiProdotto(new Cuffie(codice, nome, descrizione, prezzo, iva, colore, wireless));
+                    break;
+
+                default:
+                    System.out.println("Scelta non valida.");
+                    break;
+            }
         }
+
+        System.out.println(carrello);
     }
 }

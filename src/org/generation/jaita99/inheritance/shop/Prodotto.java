@@ -3,13 +3,17 @@ package org.generation.jaita99.inheritance.shop;
 import java.math.BigDecimal;
 
 public class Prodotto {
-    private final int codice;
+    //ATTRIBUTI
+
+    private BigDecimal codice;
     private String nome;
     private String descrizione;
     private BigDecimal prezzo;
-    private BigDecimal iva;
+    private BigDecimal iva ;
 
-    public Prodotto(int codice, String nome, String descrizione, BigDecimal prezzo, BigDecimal iva) {
+    //COSTRUTTORI
+
+    public Prodotto (BigDecimal codice,String nome,String descrizione,BigDecimal prezzo,BigDecimal iva){
         this.codice = codice;
         this.nome = nome;
         this.descrizione = descrizione;
@@ -17,23 +21,26 @@ public class Prodotto {
         this.iva = iva;
     }
 
-    public int getCodice() {
+    //GETTER E SETTER
+
+
+    public BigDecimal getCodice(){
         return codice;
     }
 
-    public String getNome() {
+    public String getNome(){
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(){
         this.nome = nome;
     }
 
-    public String getDescrizione() {
+    public String getDescrizione(){
         return descrizione;
     }
 
-    public void setDescrizione(String descrizione) {
+    public void setDescrizione(){
         this.descrizione = descrizione;
     }
 
@@ -56,19 +63,7 @@ public class Prodotto {
     public BigDecimal getPrezzoConIva() {
         return prezzo.add(prezzo.multiply(iva));
     }
+
+
 }
-
-class Smartphone extends Prodotto {
-    private String imei;
-    private int memoria;
-
-    public Smartphone(int codice, String nome, String descrizione, BigDecimal prezzo, BigDecimal iva, String imei, int memoria) {
-        super(codice, nome, descrizione, prezzo, iva);
-        this.imei = imei;
-        this.memoria = memoria;
-    }
-
-
-
-    }
 
